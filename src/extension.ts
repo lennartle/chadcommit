@@ -91,7 +91,7 @@ const suggest = async (cancelToken: vscode.CancellationToken) => {
       }
     }
 
-    if (model !== "gpt-3.5-turbo" && model !== "gpt-4" && model !== "gpt-4-1104-preview") {
+    if (model !== "gpt-3.5-turbo" && model !== "gpt-4" && model !== "gpt-4-1106-preview") {
       vscode.window.showErrorMessage("Completion model is not set!");
       return;
     }
@@ -129,7 +129,7 @@ const suggest = async (cancelToken: vscode.CancellationToken) => {
 type TurboCompletion = (props: {
   opts: {
     messages: Array<{ role: "user" | "assistant" | "system"; content: string }>;
-    model: "gpt-3.5-turbo" | "gpt-4" |  "gpt-4-1104-preview";
+    model: "gpt-3.5-turbo" | "gpt-4" |  "gpt-4-1106-preview";
     max_tokens: number;
     stream: boolean;
   };
