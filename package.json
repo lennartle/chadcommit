@@ -2,7 +2,7 @@
   "name": "chadcommit",
   "displayName": "chadCommit",
   "description": "Suggests conventional commit message using GPT 3.5 turbo or GPT 4, by analyzing staged git files.",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "activationEvents": [],
   "engines": {
     "vscode": "^1.76.0"
@@ -55,7 +55,7 @@
         "chadcommit.model": {
           "type": "string",
           "default": "gpt-3.5-turbo",
-          "enum": ["gpt-3.5-turbo", "gpt-4"],
+          "enum": ["gpt-3.5-turbo", "gpt-4", "gpt-4-1104-preview"],
           "description": "Choose preferred GPT model"
         }
       }
