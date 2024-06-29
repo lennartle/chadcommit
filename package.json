@@ -1,0 +1,95 @@
+{
+  "name": "chadcommit",
+  "displayName": "chadCommit",
+  "description": "Generate git commit messages with a single click by using GPT-4o to analyze your staged changes.",
+  "version": "1.2.1",
+  "activationEvents": [],
+  "engines": {
+    "vscode": "^1.76.0"
+  },
+  "author": {
+    "name": "lennartle"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lennartle/chadcommit.git"
+  },
+  "publisher": "lennartlence",
+  "pricing": "Free",
+  "keywords": [
+    "ai",
+    "git",
+    "chatgpt",
+    "commit",
+    "openai",
+    "gpt-4o"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "extensionDependencies": [
+    "vscode.git"
+  ],
+  "icon": "resources/icon.png",
+  "main": "out/extension.js",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "chadCommit",
+      "properties": {
+        "chadcommit.openAiKey": {
+          "type": "string",
+          "default": "",
+          "description": "(Required) API key to access the OpenAI."
+        },
+        "chadcommit.prompt": {
+          "type": "string",
+          "default": "Analyze a git diff and make a short conventional commit message, follow this template: 🚀feat(scope) [message]\\n🛠️refactor(scope) [message]\\n⚙️chore(scope) [message]; Response example: 🚀feat(player) add captions\\n🛠️refactor(player) support new formats\\n⚙️chore(dependencies) upgrade terser to 5.16.6",
+          "description": "Edit this to fit your preferred form of the commit message, change it as you want."
+        }
+      }
+    },
+    "commands": [
+      {
+        "category": "chadCommit",
+        "command": "chadcommit.suggest",
+        "title": "Suggest a commit message",
+        "icon": {
+          "light": "resources/cmd-icon-light.svg",
+          "dark": "resources/cmd-icon-dark.svg"
+        }
+      }
+    ],
+    "menus": {
+      "scm/title": [
+        {
+          "command": "chadcommit.suggest",
+          "group": "navigation",
+          "when": "scmProvider == 'git'"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p . && terser out/extension.js -o out/extension.js -c -m",
+    "watch": "tsc -watch -p .",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.76.0",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
+    "@vscode/test-electron": "^2.2.3",
+    "eslint": "^8.34.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "terser": "^5.16.6",
+    "typescript": "^4.9.5"
+  }
+}
