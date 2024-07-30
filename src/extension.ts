@@ -108,7 +108,7 @@ const suggest = async (cancelToken: vscode.CancellationToken) => {
             content: `${parsed.join("\n")}\n\n${deleted.join("\n")}\n\n${renamed.join("\n")}`,
           },
         ],
-        model: "gpt-4o",
+        model: model || "gpt-4o",
         max_tokens: 256,
         stream: true,
       },

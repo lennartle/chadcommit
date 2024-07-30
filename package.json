@@ -46,6 +46,12 @@
           "type": "string",
           "default": "Analyze a git diff and make a short conventional commit message, follow this template: 🚀feat(scope) [message]\\n🛠️refactor(scope) [message]\\n⚙️chore(scope) [message]; Response example: 🚀feat(player) add captions\\n🛠️refactor(player) support new formats\\n⚙️chore(dependencies) upgrade terser to 5.16.6",
           "description": "Edit this to fit your preferred form of the commit message, change it as you want."
+        },
+        "chadcommit.model": {
+          "type": "string",
+          "enum": ["gpt-4o", "gpt4o-mini"],
+          "default": "gpt-4o",
+          "description": "Select the OpenAI model to use for generating commit messages."
         }
       }
     },
