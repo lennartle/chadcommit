@@ -96,6 +96,11 @@ const suggest = async (cancelToken: vscode.CancellationToken) => {
       return;
     }
 
+    if(!model) {
+      vscode.window.showErrorMessage("OpenAI model is not set!");
+      return;
+    }
+
     await turboCompletion({
       opts: {
         messages: [
@@ -108,7 +113,7 @@ const suggest = async (cancelToken: vscode.CancellationToken) => {
             content: `${parsed.join("\n")}\n\n${deleted.join("\n")}\n\n${renamed.join("\n")}`,
           },
         ],
-        model: "gpt-4o",
+        model,
         max_tokens: 256,
         stream: true,
       },
